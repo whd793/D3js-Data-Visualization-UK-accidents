@@ -1,63 +1,54 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<html>
+<html lang="en">
   <head>
-      <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta charset="utf-8" />
+    <title>UK Accidents vs Transportations</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/schools.css" rel="stylesheet" />
+    <link href="css/non-responsive.css" rel="stylesheet" />
 
-  <title></title>
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/schools.css" rel="stylesheet">
-  <link href="css/non-responsive.css" rel="stylesheet">
-<style>
-/* .fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; 
-} */
+    <style>
+      /* .fixed-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%; 
+      } */
 
-.sticky {
-  position: fixed;
-  top: 0;
-  padding:10px;
-  /* width: 1150px; */
-  width: 1140px;
-    height: 120px;
-    background: #292f36;
-    position: fixed;
-    z-index: 10;
-    opacity:0.7;
-}
+      .sticky {
+        position: fixed;
+        top: 0;
+        padding: 10px;
+        /* width: 1150px; */
+        width: 1140px;
+        height: 120px;
+        background: #292f36;
+        position: fixed;
+        z-index: 10;
+        opacity: 0.7;
+      }
 
-.sticky + .content {
-  /* padding-top: 102px; */
-  color: white;
-    font-size: 2rem;
-    line-height: 60px;
-    /* position: absolute; */
-    top: 350px;
-    left: 2%;
-    visibility: hidden;
-}
+      .sticky + .content {
+        /* padding-top: 102px; */
+        color: white;
+        font-size: 2rem;
+        line-height: 60px;
+        /* position: absolute; */
+        top: 350px;
+        left: 2%;
+        visibility: hidden;
+      }
 
-
-.visible-title {
-    visibility: visible;
-}
-
-
-</style>
+      .visible-title {
+        visibility: visible;
+      }
+    </style>
   </head>
-
   <body>
-  
-      
     <div class="container" id="container">
       <h1>UK Accidents vs Transportations</h1>
-     
 
-
-        <!-- <select class="" autocomplete = "off" id="mySelecttwo" onchange="myFunction()">
+      <!-- <select class="" autocomplete = "off" id="mySelecttwo" onchange="myFunction()">
             <option value="Car">Car</option>
             <option value="Bus/coach">Bus</option>
             <option value="Motorcycle">Motorcycle</option>
@@ -75,89 +66,113 @@
                 <option value="2016">2016</option>
                
               </select> -->
-           <!-- <br><br> -->
-          
-     <p>The correlation between the number of accidents in a region and the # of transportation in the region is ____. There is a very slight relationship between a _____________.</p>
+      <!-- <br><br> -->
+
+      <p>
+        The correlation between the number of accidents in a region and the # of
+        transportation in the region is ____. There is a very slight
+        relationship between a _____________.
+      </p>
       <div id="overlay"></div>
-      <br>
-  
+      <br />
+
       <!-- <div class="header" id="myHeader"> -->
-          <nav class="header" id="myHeader">
-         
-          
-      <div class="slider">
-          <input type="range" min="2014" max="2016" step="1" value="2014" autocomplete="off" class="slider" id="myRange" onchange="myFunction()">
+      <nav class="header" id="myHeader">
+        <div class="slider">
+          <input
+            type="range"
+            min="2014"
+            max="2016"
+            step="1"
+            value="2014"
+            autocomplete="off"
+            class="slider"
+            id="myRange"
+            onchange="myFunction()"
+          />
         </div>
 
         <ul class="range-labels">
-            <li class="active selected">2014</li>
-            <li>2015</li>
-            <li>2016</li>
-        
-          </ul>
+          <li class="active selected">2014</li>
+          <li>2015</li>
+          <li>2016</li>
+        </ul>
 
-          <br><br>
-          <div class="slidertwo">
-              <input type="range" min="1" max="9" step="1" value="1" autocomplete="off" class="slidertwo" id="myRangeTwo" onchange="myFunction()">
-            </div>
+        <br /><br />
+        <div class="slidertwo">
+          <input
+            type="range"
+            min="1"
+            max="9"
+            step="1"
+            value="1"
+            autocomplete="off"
+            class="slidertwo"
+            id="myRangeTwo"
+            onchange="myFunction()"
+          />
+        </div>
 
-            <ul class="range-labelstwo">
-                <li class="active selected">Car</li>
-                <li>Bus</li>
-                <li>Motorcycle</li>
-                <li>Bicycle</li>
-                <li>National rail</li>
-                <li>Other rail</li>
-                <li>All rail</li>
-                <li>Walk</li>
-                <li>Other modes</li>
-            
-              </ul>
+        <ul class="range-labelstwo">
+          <li class="active selected">Car</li>
+          <li>Bus</li>
+          <li>Motorcycle</li>
+          <li>Bicycle</li>
+          <li>National rail</li>
+          <li>Other rail</li>
+          <li>All rail</li>
+          <li>Walk</li>
+          <li>Other modes</li>
+        </ul>
 
-              <br><br> 
-            <!-- </div> -->
+        <br /><br />
+        <!-- </div> -->
+      </nav>
 
-          </nav>
+      <div class="containertwo">
+        <div id="map"></div>
 
-          <div class="containertwo">
-      <div id="map"></div>
+        <div id="graphic"></div>
+        <div id="graphictwo"></div>
+        <div id="state" align="center"></div>
+      </div>
+    </div>
+    <!-- <script>
+      // $(window).scroll(function(){
+      //     if ($(window).scrollTop() <= 100) {
+      //         $('nav').addClass('fixed-header');
+      //         $('nav div').addClass('visible-title');
+      //     }
+      //     else {
+      //         $('nav').removeClass('fixed-header');
+      //         $('nav div').removeClass('visible-title');
+      //     }
+      // });
 
-<div id="graphic"></div>
-<div id="graphictwo"></div>
-<div id="state" align ="center"></div>
-</div>
-</div>
-     <script>
-        // $(window).scroll(function(){
-        //     if ($(window).scrollTop() <= 100) {
-        //         $('nav').addClass('fixed-header');
-        //         $('nav div').addClass('visible-title');
-        //     }
-        //     else {
-        //         $('nav').removeClass('fixed-header');
-        //         $('nav div').removeClass('visible-title');
-        //     }
-        // });
+      window.onscroll = function () {
+        scFunction();
+      };
 
-        window.onscroll = function() {scFunction()};
+      var header = document.getElementById("myHeader");
+      var sticky = header.offsetTop;
 
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
+      function scFunction() {
+        if (window.pageYOffset > sticky + 150) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
+    </script> -->
 
-function scFunction() {
-  if (window.pageYOffset > sticky + 150) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-        </script>
     <script src="lib/jquery/jquery-1.10.2.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/d3/d3.v3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <!-- <script src="lib/d3/d3.v3.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="js/map.js"></script>
   </body>
 </html>
